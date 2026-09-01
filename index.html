@@ -53,6 +53,39 @@
         overflow: hidden;
       }
 
+      nav {
+        display: flex;
+        gap: 0.35rem;
+        padding: 0.7rem 0.7rem 0;
+        background: #fff6f9;
+        border-bottom: 3px solid var(--tinta);
+      }
+
+      nav button {
+        flex: 1;
+        margin: 0;
+        padding: 0.7rem 0.4rem;
+        border: 0;
+        border-radius: 1rem 1rem 0 0;
+        background: transparent;
+        color: var(--suave);
+        font: inherit;
+        font-weight: 700;
+        font-size: 0.82rem;
+        cursor: pointer;
+        box-shadow: none;
+      }
+
+      nav button:hover {
+        background: var(--rosa-3);
+        color: var(--tinta);
+      }
+
+      nav button[aria-selected="true"] {
+        background: var(--rosa);
+        color: #fff;
+      }
+
       .hero {
         display: grid;
         gap: 1.4rem;
@@ -107,7 +140,11 @@
         padding: 1.5rem 1.4rem 1.7rem;
       }
 
-      section + section {
+      .vista[hidden] {
+        display: none;
+      }
+
+      .cuerpo section + section {
         margin-top: 1.6rem;
       }
 
@@ -138,7 +175,7 @@
         color: var(--suave);
       }
 
-      ul {
+      .experiencia {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -146,7 +183,7 @@
         gap: 0.65rem;
       }
 
-      li {
+      .experiencia li {
         display: grid;
         grid-template-columns: 7.2rem 1fr;
         gap: 0.8rem;
@@ -157,7 +194,7 @@
         border: 1.5px solid #f3c4d4;
       }
 
-      li:first-child {
+      .experiencia li:first-child {
         background: #fff1e6;
         border-color: #f5c19a;
       }
@@ -169,7 +206,7 @@
         color: var(--rosa);
       }
 
-      li:first-child .anio {
+      .experiencia li:first-child .anio {
         color: var(--naranja);
       }
 
@@ -233,7 +270,7 @@
         border-color: var(--rosa);
       }
 
-      button {
+      .enviar {
         justify-self: start;
         margin-top: 0.2rem;
         padding: 0.8rem 1.3rem;
@@ -247,13 +284,38 @@
         box-shadow: 4px 4px 0 var(--tinta);
       }
 
-      button:hover {
+      .enviar:hover {
         background: #cc2f68;
+      }
+
+      .vacio {
+        padding: 2rem 1.1rem;
+        border-radius: 1.2rem;
+        background: var(--rosa-3);
+        border: 2px dashed #f3c4d4;
+        text-align: center;
+        color: var(--suave);
+      }
+
+      .vacio strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--tinta);
+        font-family: Fraunces, Georgia, serif;
+        font-size: 1.2rem;
       }
 
       @media (min-width: 640px) {
         main {
           padding: 3.25rem 1.5rem 4rem;
+        }
+
+        nav {
+          padding: 0.8rem 1rem 0;
+        }
+
+        nav button {
+          font-size: 0.92rem;
         }
 
         .hero {
@@ -275,82 +337,133 @@
   <body>
     <main>
       <article class="tarjeta">
-        <header class="hero">
-          <img src="./foto.jpg" alt="Noelia Milagros Ramos Ramirez" width="272" height="272" />
-          <div>
-            <h1>Noelia <em>Milagros Ramos Ramirez</em></h1>
-            <p class="cinta">Administración y Marketing</p>
+        <nav aria-label="Secciones">
+          <button type="button" data-vista="inicio" aria-selected="true">Inicio</button>
+          <button type="button" data-vista="certificaciones" aria-selected="false">
+            Certificaciones
+          </button>
+          <button type="button" data-vista="blog" aria-selected="false">Blog</button>
+        </nav>
+
+        <div class="vista" id="inicio">
+          <header class="hero">
+            <img src="./foto.jpg" alt="Noelia Milagros Ramos Ramirez" width="272" height="272" />
+            <div>
+              <h1>Noelia <em>Milagros Ramos Ramirez</em></h1>
+              <p class="cinta">Administración y Marketing</p>
+            </div>
+          </header>
+
+          <div class="cuerpo">
+            <section>
+              <h2>Estudios</h2>
+              <p class="estudio">
+                <strong>Administración y Marketing</strong>
+                <span>Universidad Católica San Pablo</span>
+              </p>
+            </section>
+
+            <section>
+              <h2>Experiencia <span>.</span></h2>
+              <ul class="experiencia">
+                <li>
+                  <span class="anio">2022–2025</span>
+                  <span>Asistente administrativa</span>
+                </li>
+                <li>
+                  <span class="anio">2021</span>
+                  <span>Ventas, Grupo Noral</span>
+                </li>
+                <li>
+                  <span class="anio">2020</span>
+                  <span>Congreso</span>
+                </li>
+                <li>
+                  <span class="anio">2018–2019</span>
+                  <span>Atención al cliente</span>
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>Idiomas</h2>
+              <p class="idioma">
+                <span class="chip">B1</span>
+                Inglés. En estudio.
+              </p>
+            </section>
+
+            <section>
+              <h2>Contacto <span>.</span></h2>
+              <form id="contacto">
+                <label>
+                  Nombre
+                  <input type="text" name="nombre" required autocomplete="name" />
+                </label>
+                <div class="fila">
+                  <label>
+                    Teléfono
+                    <input type="tel" name="telefono" required autocomplete="tel" />
+                  </label>
+                  <label>
+                    Correo
+                    <input type="email" name="correo" required autocomplete="email" />
+                  </label>
+                </div>
+                <label>
+                  Mensaje
+                  <textarea name="mensaje" required></textarea>
+                </label>
+                <button class="enviar" type="submit">Enviar por WhatsApp</button>
+              </form>
+            </section>
           </div>
-        </header>
+        </div>
 
-        <div class="cuerpo">
-          <section>
-            <h2>Estudios</h2>
-            <p class="estudio">
-              <strong>Administración y Marketing</strong>
-              <span>Universidad Católica San Pablo</span>
+        <div class="vista" id="certificaciones" hidden>
+          <div class="cuerpo">
+            <h2>Certificaciones</h2>
+            <p class="vacio">
+              <strong>Aún no hay certificados aquí.</strong>
+              Cuando los tengamos, aparecen en esta pestaña.
             </p>
-          </section>
+          </div>
+        </div>
 
-          <section>
-            <h2>Experiencia <span>.</span></h2>
-            <ul>
-              <li>
-                <span class="anio">2022–2025</span>
-                <span>Asistente administrativa</span>
-              </li>
-              <li>
-                <span class="anio">2021</span>
-                <span>Ventas, Grupo Noral</span>
-              </li>
-              <li>
-                <span class="anio">2020</span>
-                <span>Congreso</span>
-              </li>
-              <li>
-                <span class="anio">2018–2019</span>
-                <span>Atención al cliente</span>
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2>Idiomas</h2>
-            <p class="idioma">
-              <span class="chip">B1</span>
-              Inglés. En estudio.
+        <div class="vista" id="blog" hidden>
+          <div class="cuerpo">
+            <h2>Blog</h2>
+            <p class="vacio">
+              <strong>Todavía no hay publicaciones.</strong>
+              Esta pestaña ya cambia; el primer post se suma cuando lo pases.
             </p>
-          </section>
-
-          <section>
-            <h2>Contacto <span>.</span></h2>
-            <form id="contacto">
-              <label>
-                Nombre
-                <input type="text" name="nombre" required autocomplete="name" />
-              </label>
-              <div class="fila">
-                <label>
-                  Teléfono
-                  <input type="tel" name="telefono" required autocomplete="tel" />
-                </label>
-                <label>
-                  Correo
-                  <input type="email" name="correo" required autocomplete="email" />
-                </label>
-              </div>
-              <label>
-                Mensaje
-                <textarea name="mensaje" required></textarea>
-              </label>
-              <button type="submit">Enviar por WhatsApp</button>
-            </form>
-          </section>
+          </div>
         </div>
       </article>
     </main>
     <script>
       const WHATSAPP = "51916901772";
+      const vistas = ["inicio", "certificaciones", "blog"];
+
+      const mostrar = (nombre) => {
+        const actual = vistas.includes(nombre) ? nombre : "inicio";
+        vistas.forEach((vista) => {
+          document.getElementById(vista).hidden = vista !== actual;
+        });
+        document.querySelectorAll("nav button").forEach((boton) => {
+          boton.setAttribute("aria-selected", String(boton.dataset.vista === actual));
+        });
+        if (location.hash.replace("#", "") !== actual) {
+          history.replaceState(null, "", `#${actual}`);
+        }
+      };
+
+      document.querySelectorAll("nav button").forEach((boton) => {
+        boton.addEventListener("click", () => mostrar(boton.dataset.vista));
+      });
+
+      window.addEventListener("hashchange", () => mostrar(location.hash.replace("#", "")));
+      mostrar(location.hash.replace("#", "") || "inicio");
 
       document.getElementById("contacto").addEventListener("submit", (evento) => {
         evento.preventDefault();
