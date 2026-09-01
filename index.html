@@ -13,7 +13,6 @@
     <style>
       :root {
         --rosa: #e43d7a;
-        --rosa-2: #f7b3c8;
         --rosa-3: #ffe4ee;
         --naranja: #f17a3a;
         --tinta: #3a1730;
@@ -29,51 +28,48 @@
         margin: 0;
         min-height: 100dvh;
         background:
-          radial-gradient(circle at 12% 18%, #ffc1d4 0 18px, transparent 19px),
-          radial-gradient(circle at 88% 8%, #ffb07a 0 12px, transparent 13px),
-          radial-gradient(circle at 78% 92%, #f7b3c8 0 22px, transparent 23px),
-          radial-gradient(circle at 8% 86%, #ffd0a8 0 10px, transparent 11px),
-          linear-gradient(165deg, #ffd6e4 0%, var(--papel) 42%, #ffe8d4 100%);
+          radial-gradient(circle at 8% 12%, #ffc1d4 0 22px, transparent 23px),
+          radial-gradient(circle at 92% 18%, #ffb07a 0 16px, transparent 17px),
+          radial-gradient(circle at 86% 88%, #f7b3c8 0 26px, transparent 27px),
+          linear-gradient(165deg, #ffd6e4 0%, var(--papel) 40%, #ffe8d4 100%);
         color: var(--tinta);
         font-family: Karla, system-ui, sans-serif;
         line-height: 1.5;
       }
 
-      main {
-        max-width: 42rem;
-        margin: 0 auto;
-        padding: 2.25rem 1.15rem 3.5rem;
+      .barra {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 0.9rem 6vw;
+        background: #fff;
+        border-bottom: 3px solid var(--tinta);
       }
 
-      .tarjeta {
-        background: #fff;
-        border: 3px solid var(--tinta);
-        border-radius: 2rem;
-        box-shadow: 10px 12px 0 var(--rosa);
-        overflow: hidden;
+      .marca {
+        font-family: Fraunces, Georgia, serif;
+        font-size: 1.2rem;
+        font-weight: 700;
       }
 
       nav {
         display: flex;
-        gap: 0.35rem;
-        padding: 0.7rem 0.7rem 0;
-        background: #fff6f9;
-        border-bottom: 3px solid var(--tinta);
+        gap: 0.4rem;
       }
 
       nav button {
-        flex: 1;
-        margin: 0;
-        padding: 0.7rem 0.4rem;
+        padding: 0.55rem 1.05rem;
         border: 0;
-        border-radius: 1rem 1rem 0 0;
+        border-radius: 999px;
         background: transparent;
         color: var(--suave);
         font: inherit;
         font-weight: 700;
-        font-size: 0.82rem;
         cursor: pointer;
-        box-shadow: none;
       }
 
       nav button:hover {
@@ -86,31 +82,35 @@
         color: #fff;
       }
 
+      .vista[hidden] {
+        display: none;
+      }
+
       .hero {
         display: grid;
-        gap: 1.4rem;
-        padding: 1.6rem 1.4rem 1.5rem;
+        gap: 2rem;
+        align-items: center;
+        padding: 3rem 6vw 2.5rem;
         background:
-          radial-gradient(circle at 90% 20%, rgba(241, 122, 58, 0.28), transparent 32%),
-          linear-gradient(135deg, #ff4f8b 0%, #e43d7a 55%, #f17a3a 140%);
+          radial-gradient(circle at 88% 20%, rgba(241, 122, 58, 0.3), transparent 28%),
+          linear-gradient(120deg, #ff4f8b 0%, #e43d7a 52%, #f17a3a 130%);
         color: #fff;
       }
 
       .hero img {
-        width: 8.5rem;
-        height: 8.5rem;
+        width: min(22rem, 100%);
+        height: 22rem;
         object-fit: cover;
         object-position: 50% 18%;
-        border-radius: 1.35rem;
-        border: 4px solid #fff;
-        box-shadow: 6px 6px 0 rgba(58, 23, 48, 0.28);
-        transform: rotate(-3deg);
+        border-radius: 1.6rem;
+        border: 5px solid #fff;
+        box-shadow: 10px 10px 0 rgba(58, 23, 48, 0.25);
       }
 
       h1 {
         margin: 0;
         font-family: Fraunces, Georgia, serif;
-        font-size: clamp(2.1rem, 8vw, 3.15rem);
+        font-size: clamp(2.6rem, 5vw, 4.4rem);
         font-weight: 700;
         line-height: 0.95;
         letter-spacing: -0.03em;
@@ -120,38 +120,46 @@
         display: block;
         font-style: italic;
         font-weight: 500;
-        font-size: 0.72em;
+        font-size: 0.62em;
       }
 
       .cinta {
         display: inline-block;
-        margin-top: 0.85rem;
-        padding: 0.28rem 0.7rem;
+        margin-top: 1.1rem;
+        padding: 0.35rem 0.85rem;
         border-radius: 999px;
         background: #fff;
         color: var(--rosa);
-        font-size: 0.72rem;
+        font-size: 0.8rem;
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      .cuerpo {
-        padding: 1.5rem 1.4rem 1.7rem;
+      .contenido {
+        display: grid;
+        gap: 2rem;
+        width: min(70rem, calc(100% - 12vw));
+        margin: 0 auto;
+        padding: 2.5rem 0 4rem;
       }
 
-      .vista[hidden] {
-        display: none;
+      .panel {
+        background: #fff;
+        border: 3px solid var(--tinta);
+        border-radius: 1.6rem;
+        box-shadow: 8px 8px 0 var(--rosa);
+        padding: 1.6rem 1.7rem 1.8rem;
       }
 
-      .cuerpo section + section {
-        margin-top: 1.6rem;
+      .columna .panel + .panel {
+        margin-top: 1.4rem;
       }
 
       h2 {
-        margin: 0 0 0.7rem;
+        margin: 0 0 0.85rem;
         font-family: Fraunces, Georgia, serif;
-        font-size: 1.35rem;
+        font-size: 1.55rem;
         font-weight: 700;
       }
 
@@ -160,7 +168,7 @@
       }
 
       .estudio {
-        padding: 1rem 1.05rem;
+        padding: 1.05rem 1.15rem;
         border-radius: 1.1rem;
         background: var(--rosa-3);
         border-left: 6px solid var(--rosa);
@@ -168,7 +176,7 @@
 
       .estudio strong {
         display: block;
-        font-size: 1.08rem;
+        font-size: 1.12rem;
       }
 
       .estudio span {
@@ -180,15 +188,15 @@
         padding: 0;
         list-style: none;
         display: grid;
-        gap: 0.65rem;
+        gap: 0.7rem;
       }
 
       .experiencia li {
         display: grid;
-        grid-template-columns: 7.2rem 1fr;
-        gap: 0.8rem;
+        grid-template-columns: 8rem 1fr;
+        gap: 0.9rem;
         align-items: center;
-        padding: 0.85rem 0.95rem;
+        padding: 0.95rem 1.05rem;
         border-radius: 1rem;
         background: #fff6f9;
         border: 1.5px solid #f3c4d4;
@@ -200,9 +208,8 @@
       }
 
       .anio {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-weight: 700;
-        letter-spacing: 0.04em;
         color: var(--rosa);
       }
 
@@ -214,43 +221,43 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 0.65rem 0.85rem;
-        padding: 0.95rem 1.05rem;
+        gap: 0.7rem;
+        padding: 1rem 1.1rem;
         border-radius: 1.1rem;
         background: #fff1e6;
         border: 1.5px dashed var(--naranja);
       }
 
       .chip {
-        padding: 0.25rem 0.7rem;
+        padding: 0.28rem 0.75rem;
         border-radius: 999px;
         background: var(--naranja);
         color: #fff;
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         font-weight: 700;
       }
 
       form {
         display: grid;
-        gap: 0.75rem;
+        gap: 0.8rem;
       }
 
       .fila {
         display: grid;
-        gap: 0.75rem;
+        gap: 0.8rem;
       }
 
       label {
         display: grid;
         gap: 0.35rem;
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         font-weight: 700;
       }
 
       input,
       textarea {
         width: 100%;
-        padding: 0.75rem 0.85rem;
+        padding: 0.8rem 0.9rem;
         border: 1.5px solid #f3c4d4;
         border-radius: 0.9rem;
         background: #fff6f9;
@@ -259,7 +266,7 @@
       }
 
       textarea {
-        min-height: 7rem;
+        min-height: 7.5rem;
         resize: vertical;
       }
 
@@ -272,8 +279,7 @@
 
       .enviar {
         justify-self: start;
-        margin-top: 0.2rem;
-        padding: 0.8rem 1.3rem;
+        padding: 0.85rem 1.4rem;
         border: 0;
         border-radius: 999px;
         background: var(--rosa);
@@ -289,7 +295,7 @@
       }
 
       .vacio {
-        padding: 2rem 1.1rem;
+        padding: 3.5rem 2rem;
         border-radius: 1.2rem;
         background: var(--rosa-3);
         border: 2px dashed #f3c4d4;
@@ -299,148 +305,164 @@
 
       .vacio strong {
         display: block;
-        margin-bottom: 0.35rem;
+        margin-bottom: 0.4rem;
         color: var(--tinta);
         font-family: Fraunces, Georgia, serif;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
       }
 
-      @media (min-width: 640px) {
-        main {
-          padding: 3.25rem 1.5rem 4rem;
-        }
-
-        nav {
-          padding: 0.8rem 1rem 0;
-        }
-
-        nav button {
-          font-size: 0.92rem;
-        }
-
+      @media (min-width: 900px) {
         .hero {
-          grid-template-columns: auto 1fr;
-          align-items: center;
-          padding: 1.9rem 2rem;
+          grid-template-columns: 22rem 1fr;
+          padding: 3.5rem 6vw 3rem;
         }
 
-        .cuerpo {
-          padding: 1.85rem 2rem 2.1rem;
+        .inicio-grid {
+          grid-template-columns: 1.15fr 0.85fr;
+          align-items: start;
         }
 
         .fila {
           grid-template-columns: 1fr 1fr;
         }
       }
+
+      @media (max-width: 699px) {
+        .barra {
+          flex-direction: column;
+          align-items: stretch;
+          padding: 0.8rem 1rem;
+        }
+
+        nav {
+          justify-content: space-between;
+        }
+
+        nav button {
+          flex: 1;
+          padding: 0.55rem 0.3rem;
+          font-size: 0.78rem;
+        }
+
+        .hero img {
+          height: 16rem;
+        }
+      }
     </style>
   </head>
   <body>
-    <main>
-      <article class="tarjeta">
-        <nav aria-label="Secciones">
-          <button type="button" data-vista="inicio" aria-selected="true">Inicio</button>
-          <button type="button" data-vista="certificaciones" aria-selected="false">
-            Certificaciones
-          </button>
-          <button type="button" data-vista="blog" aria-selected="false">Blog</button>
-        </nav>
+    <header class="barra">
+      <p class="marca">Noelia Ramos</p>
+      <nav aria-label="Secciones">
+        <button type="button" data-vista="inicio" aria-selected="true">Inicio</button>
+        <button type="button" data-vista="certificaciones" aria-selected="false">
+          Certificaciones
+        </button>
+        <button type="button" data-vista="blog" aria-selected="false">Blog</button>
+      </nav>
+    </header>
 
-        <div class="vista" id="inicio">
-          <header class="hero">
-            <img src="./foto.jpg" alt="Noelia Milagros Ramos Ramirez" width="272" height="272" />
-            <div>
-              <h1>Noelia <em>Milagros Ramos Ramirez</em></h1>
-              <p class="cinta">Administración y Marketing</p>
-            </div>
-          </header>
-
-          <div class="cuerpo">
-            <section>
-              <h2>Estudios</h2>
-              <p class="estudio">
-                <strong>Administración y Marketing</strong>
-                <span>Universidad Católica San Pablo</span>
-              </p>
-            </section>
-
-            <section>
-              <h2>Experiencia <span>.</span></h2>
-              <ul class="experiencia">
-                <li>
-                  <span class="anio">2022–2025</span>
-                  <span>Asistente administrativa</span>
-                </li>
-                <li>
-                  <span class="anio">2021</span>
-                  <span>Ventas, Grupo Noral</span>
-                </li>
-                <li>
-                  <span class="anio">2020</span>
-                  <span>Congreso</span>
-                </li>
-                <li>
-                  <span class="anio">2018–2019</span>
-                  <span>Atención al cliente</span>
-                </li>
-              </ul>
-            </section>
-
-            <section>
-              <h2>Idiomas</h2>
-              <p class="idioma">
-                <span class="chip">B1</span>
-                Inglés. En estudio.
-              </p>
-            </section>
-
-            <section>
-              <h2>Contacto <span>.</span></h2>
-              <form id="contacto">
-                <label>
-                  Nombre
-                  <input type="text" name="nombre" required autocomplete="name" />
-                </label>
-                <div class="fila">
-                  <label>
-                    Teléfono
-                    <input type="tel" name="telefono" required autocomplete="tel" />
-                  </label>
-                  <label>
-                    Correo
-                    <input type="email" name="correo" required autocomplete="email" />
-                  </label>
-                </div>
-                <label>
-                  Mensaje
-                  <textarea name="mensaje" required></textarea>
-                </label>
-                <button class="enviar" type="submit">Enviar por WhatsApp</button>
-              </form>
-            </section>
-          </div>
+    <div class="vista" id="inicio">
+      <section class="hero">
+        <img src="./foto.jpg" alt="Noelia Milagros Ramos Ramirez" width="352" height="352" />
+        <div>
+          <h1>Noelia <em>Milagros Ramos Ramirez</em></h1>
+          <p class="cinta">Administración y Marketing</p>
         </div>
+      </section>
 
-        <div class="vista" id="certificaciones" hidden>
-          <div class="cuerpo">
-            <h2>Certificaciones</h2>
-            <p class="vacio">
-              <strong>Aún no hay certificados aquí.</strong>
-              Cuando los tengamos, aparecen en esta pestaña.
+      <div class="contenido inicio-grid">
+        <div class="columna">
+          <section class="panel">
+            <h2>Estudios</h2>
+            <p class="estudio">
+              <strong>Administración y Marketing</strong>
+              <span>Universidad Católica San Pablo</span>
             </p>
-          </div>
+          </section>
+          <section class="panel">
+            <h2>Experiencia <span>.</span></h2>
+            <ul class="experiencia">
+              <li>
+                <span class="anio">2022–2025</span>
+                <span>Asistente administrativa</span>
+              </li>
+              <li>
+                <span class="anio">2021</span>
+                <span>Ventas, Grupo Noral</span>
+              </li>
+              <li>
+                <span class="anio">2020</span>
+                <span>Congreso</span>
+              </li>
+              <li>
+                <span class="anio">2018–2019</span>
+                <span>Atención al cliente</span>
+              </li>
+            </ul>
+          </section>
         </div>
 
-        <div class="vista" id="blog" hidden>
-          <div class="cuerpo">
-            <h2>Blog</h2>
-            <p class="vacio">
-              <strong>Todavía no hay publicaciones.</strong>
-              Esta pestaña ya cambia; el primer post se suma cuando lo pases.
+        <div class="columna">
+          <section class="panel">
+            <h2>Idiomas</h2>
+            <p class="idioma">
+              <span class="chip">B1</span>
+              Inglés. En estudio.
             </p>
-          </div>
+          </section>
+          <section class="panel">
+            <h2>Contacto <span>.</span></h2>
+            <form id="contacto">
+              <label>
+                Nombre
+                <input type="text" name="nombre" required autocomplete="name" />
+              </label>
+              <div class="fila">
+                <label>
+                  Teléfono
+                  <input type="tel" name="telefono" required autocomplete="tel" />
+                </label>
+                <label>
+                  Correo
+                  <input type="email" name="correo" required autocomplete="email" />
+                </label>
+              </div>
+              <label>
+                Mensaje
+                <textarea name="mensaje" required></textarea>
+              </label>
+              <button class="enviar" type="submit">Enviar por WhatsApp</button>
+            </form>
+          </section>
         </div>
-      </article>
-    </main>
+      </div>
+    </div>
+
+    <div class="vista" id="certificaciones" hidden>
+      <div class="contenido">
+        <section class="panel">
+          <h2>Certificaciones</h2>
+          <p class="vacio">
+            <strong>Aún no hay certificados aquí.</strong>
+            Cuando los tengamos, aparecen en esta página.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <div class="vista" id="blog" hidden>
+      <div class="contenido">
+        <section class="panel">
+          <h2>Blog</h2>
+          <p class="vacio">
+            <strong>Todavía no hay publicaciones.</strong>
+            Esta página ya cambia; el primer post se suma cuando lo pases.
+          </p>
+        </section>
+      </div>
+    </div>
+
     <script>
       const WHATSAPP = "51916901772";
       const vistas = ["inicio", "certificaciones", "blog"];
