@@ -1,671 +1,194 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Noelia Milagros Ramos Ramirez</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Karla:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --rosa: #e43d7a;
-        --rosa-3: #ffe4ee;
-        --naranja: #f17a3a;
-        --tinta: #3a1730;
-        --suave: #7a4a62;
-        --papel: #fff7fa;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100dvh;
-        background:
-          radial-gradient(circle at 8% 12%, #ffc1d4 0 22px, transparent 23px),
-          radial-gradient(circle at 92% 18%, #ffb07a 0 16px, transparent 17px),
-          radial-gradient(circle at 86% 88%, #f7b3c8 0 26px, transparent 27px),
-          linear-gradient(165deg, #ffd6e4 0%, var(--papel) 40%, #ffe8d4 100%);
-        color: var(--tinta);
-        font-family: Karla, system-ui, sans-serif;
-        line-height: 1.5;
-      }
-
-      .barra {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1.5rem;
-        padding: 0.9rem 6vw;
-        background: #fff;
-        border-bottom: 3px solid var(--tinta);
-      }
-
-      .marca {
-        font-family: Fraunces, Georgia, serif;
-        font-size: 1.2rem;
-        font-weight: 700;
-      }
-
-      nav {
-        display: flex;
-        gap: 0.4rem;
-      }
-
-      nav button {
-        padding: 0.55rem 1.05rem;
-        border: 0;
-        border-radius: 999px;
-        background: transparent;
-        color: var(--suave);
-        font: inherit;
-        font-weight: 700;
-        cursor: pointer;
-      }
-
-      nav button:hover {
-        background: var(--rosa-3);
-        color: var(--tinta);
-      }
-
-      nav button[aria-selected="true"] {
-        background: var(--rosa);
-        color: #fff;
-      }
-
-      .vista[hidden] {
-        display: none;
-      }
-
-      .hero {
-        display: grid;
-        gap: 2rem;
-        align-items: center;
-        padding: 3rem 6vw 2.5rem;
-        background:
-          radial-gradient(circle at 88% 20%, rgba(241, 122, 58, 0.3), transparent 28%),
-          linear-gradient(120deg, #ff4f8b 0%, #e43d7a 52%, #f17a3a 130%);
-        color: #fff;
-      }
-
-      .hero img {
-        width: min(22rem, 100%);
-        height: 22rem;
-        object-fit: cover;
-        object-position: 50% 18%;
-        border-radius: 1.6rem;
-        border: 5px solid #fff;
-        box-shadow: 10px 10px 0 rgba(58, 23, 48, 0.25);
-      }
-
-      h1 {
-        margin: 0;
-        font-family: Fraunces, Georgia, serif;
-        font-size: clamp(2.6rem, 5vw, 4.4rem);
-        font-weight: 700;
-        line-height: 0.95;
-        letter-spacing: -0.03em;
-      }
-
-      h1 em {
-        display: block;
-        font-style: italic;
-        font-weight: 500;
-        font-size: 0.62em;
-      }
-
-      .cinta {
-        display: inline-block;
-        margin-top: 1.1rem;
-        padding: 0.35rem 0.85rem;
-        border-radius: 999px;
-        background: #fff;
-        color: var(--rosa);
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .bio {
-        max-width: 36rem;
-        margin: 1rem 0 0;
-        font-size: 1.08rem;
-        line-height: 1.55;
-        color: #ffeaf1;
-      }
-
-      .habilidades {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .habilidades li {
-        padding: 0.35rem 0.75rem;
-        border-radius: 999px;
-        background: var(--rosa-3);
-        border: 1.5px solid #f3c4d4;
-        font-size: 0.88rem;
-        font-weight: 700;
-      }
-
-      .experiencia li {
-        grid-template-columns: 8rem 1fr;
-        align-items: start;
-      }
-
-      .puesto {
-        display: block;
-        font-weight: 700;
-      }
-
-      .detalle {
-        display: block;
-        margin-top: 0.25rem;
-        color: var(--suave);
-        font-size: 0.92rem;
-      }
-
-      .certs,
-      .posts {
-        display: grid;
-        gap: 1rem;
-      }
-
-      .cert,
-      .post {
-        padding: 1.1rem 1.15rem;
-        border-radius: 1.1rem;
-        background: #fff6f9;
-        border: 1.5px solid #f3c4d4;
-      }
-
-      .cert strong,
-      .post strong {
-        display: block;
-        font-size: 1.05rem;
-      }
-
-      .meta {
-        margin: 0.2rem 0 0.45rem;
-        color: var(--rosa);
-        font-size: 0.8rem;
-        font-weight: 700;
-      }
-
-      .post p,
-      .cert p {
-        margin: 0;
-        color: var(--suave);
-      }
-
-      .contenido {
-        display: grid;
-        gap: 2rem;
-        width: min(70rem, calc(100% - 12vw));
-        margin: 0 auto;
-        padding: 2.5rem 0 4rem;
-      }
-
-      .panel {
-        background: #fff;
-        border: 3px solid var(--tinta);
-        border-radius: 1.6rem;
-        box-shadow: 8px 8px 0 var(--rosa);
-        padding: 1.6rem 1.7rem 1.8rem;
-      }
-
-      .columna .panel + .panel {
-        margin-top: 1.4rem;
-      }
-
-      h2 {
-        margin: 0 0 0.85rem;
-        font-family: Fraunces, Georgia, serif;
-        font-size: 1.55rem;
-        font-weight: 700;
-      }
-
-      h2 span {
-        color: var(--naranja);
-      }
-
-      .estudio {
-        padding: 1.05rem 1.15rem;
-        border-radius: 1.1rem;
-        background: var(--rosa-3);
-        border-left: 6px solid var(--rosa);
-      }
-
-      .estudio strong {
-        display: block;
-        font-size: 1.12rem;
-      }
-
-      .estudio span {
-        color: var(--suave);
-      }
-
-      .experiencia {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 0.7rem;
-      }
-
-      .experiencia li {
-        display: grid;
-        grid-template-columns: 8rem 1fr;
-        gap: 0.9rem;
-        align-items: center;
-        padding: 0.95rem 1.05rem;
-        border-radius: 1rem;
-        background: #fff6f9;
-        border: 1.5px solid #f3c4d4;
-      }
-
-      .experiencia li:first-child {
-        background: #fff1e6;
-        border-color: #f5c19a;
-      }
-
-      .anio {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--rosa);
-      }
-
-      .experiencia li:first-child .anio {
-        color: var(--naranja);
-      }
-
-      .idioma {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.7rem;
-        padding: 1rem 1.1rem;
-        border-radius: 1.1rem;
-        background: #fff1e6;
-        border: 1.5px dashed var(--naranja);
-      }
-
-      .chip {
-        padding: 0.28rem 0.75rem;
-        border-radius: 999px;
-        background: var(--naranja);
-        color: #fff;
-        font-size: 0.8rem;
-        font-weight: 700;
-      }
-
-      form {
-        display: grid;
-        gap: 0.8rem;
-      }
-
-      .fila {
-        display: grid;
-        gap: 0.8rem;
-      }
-
-      label {
-        display: grid;
-        gap: 0.35rem;
-        font-size: 0.82rem;
-        font-weight: 700;
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        padding: 0.8rem 0.9rem;
-        border: 1.5px solid #f3c4d4;
-        border-radius: 0.9rem;
-        background: #fff6f9;
-        color: var(--tinta);
-        font: inherit;
-      }
-
-      textarea {
-        min-height: 7.5rem;
-        resize: vertical;
-      }
-
-      input:focus,
-      textarea:focus {
-        outline: 2px solid var(--rosa);
-        outline-offset: 2px;
-        border-color: var(--rosa);
-      }
-
-      .enviar {
-        justify-self: start;
-        padding: 0.85rem 1.4rem;
-        border: 0;
-        border-radius: 999px;
-        background: var(--rosa);
-        color: #fff;
-        font: inherit;
-        font-weight: 700;
-        cursor: pointer;
-        box-shadow: 4px 4px 0 var(--tinta);
-      }
-
-      .enviar:hover {
-        background: #cc2f68;
-      }
-
-      .vacio {
-        padding: 3.5rem 2rem;
-        border-radius: 1.2rem;
-        background: var(--rosa-3);
-        border: 2px dashed #f3c4d4;
-        text-align: center;
-        color: var(--suave);
-      }
-
-      .vacio strong {
-        display: block;
-        margin-bottom: 0.4rem;
-        color: var(--tinta);
-        font-family: Fraunces, Georgia, serif;
-        font-size: 1.4rem;
-      }
-
-      @media (min-width: 900px) {
-        .hero {
-          grid-template-columns: 22rem 1fr;
-          padding: 3.5rem 6vw 3rem;
-        }
-
-        .inicio-grid {
-          grid-template-columns: 1.15fr 0.85fr;
-          align-items: start;
-        }
-
-        .fila {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .certs,
-        .posts {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      @media (max-width: 699px) {
-        .barra {
-          flex-direction: column;
-          align-items: stretch;
-          padding: 0.8rem 1rem;
-        }
-
-        nav {
-          justify-content: space-between;
-        }
-
-        nav button {
-          flex: 1;
-          padding: 0.55rem 0.3rem;
-          font-size: 0.78rem;
-        }
-
-        .hero img {
-          height: 16rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="barra">
-      <p class="marca">Noelia Ramos</p>
-      <nav aria-label="Secciones">
-        <button type="button" data-vista="inicio" aria-selected="true">Inicio</button>
-        <button type="button" data-vista="certificaciones" aria-selected="false">
-          Certificaciones
-        </button>
-        <button type="button" data-vista="blog" aria-selected="false">Blog</button>
-      </nav>
-    </header>
-
-    <div class="vista" id="inicio">
-      <section class="hero">
-        <img src="./foto.jpg" alt="Noelia Milagros Ramos Ramirez" width="352" height="352" />
-        <div>
-          <h1>Noelia <em>Milagros Ramos Ramirez</em></h1>
-          <p class="cinta">Administración y Marketing</p>
-          <p class="bio">
-            Estudiante de la Universidad Católica San Pablo. Me gusta el trato con
-            las personas, el orden de una oficina y aprender marketing en la práctica.
-          </p>
-        </div>
-      </section>
-
-      <div class="contenido inicio-grid">
-        <div class="columna">
-          <section class="panel">
-            <h2>Estudios</h2>
-            <p class="estudio">
-              <strong>Administración y Marketing</strong>
-              <span>Universidad Católica San Pablo · Arequipa · 2021 — en curso</span>
-            </p>
-          </section>
-          <section class="panel">
-            <h2>Experiencia <span>.</span></h2>
-            <ul class="experiencia">
-              <li>
-                <span class="anio">2022–2025</span>
-                <span>
-                  <span class="puesto">Asistente administrativa</span>
-                  <span class="detalle">
-                    Agenda, archivo, atención a proveedores y apoyo en reportes
-                    diarios de oficina.
-                  </span>
-                </span>
-              </li>
-              <li>
-                <span class="anio">2021</span>
-                <span>
-                  <span class="puesto">Ventas, Grupo Noral</span>
-                  <span class="detalle">
-                    Seguimiento de clientes, cotizaciones y metas del mes.
-                  </span>
-                </span>
-              </li>
-              <li>
-                <span class="anio">2020</span>
-                <span>
-                  <span class="puesto">Apoyo administrativo, Congreso</span>
-                  <span class="detalle">
-                    Atención al público, registro de documentos y apoyo en mesa
-                    de partes.
-                  </span>
-                </span>
-              </li>
-              <li>
-                <span class="anio">2018–2019</span>
-                <span>
-                  <span class="puesto">Atención al cliente</span>
-                  <span class="detalle">
-                    Mostrador, consultas y reclamos, con foco en un trato claro
-                    y rápido.
-                  </span>
-                </span>
-              </li>
-            </ul>
-          </section>
-        </div>
-
-        <div class="columna">
-          <section class="panel">
-            <h2>Idiomas</h2>
-            <p class="idioma">
-              <span class="chip">B1</span>
-              Inglés. En estudio. Español nativo.
-            </p>
-          </section>
-          <section class="panel">
-            <h2>Habilidades</h2>
-            <ul class="habilidades">
-              <li>Excel</li>
-              <li>Word</li>
-              <li>PowerPoint</li>
-              <li>Atención al público</li>
-              <li>Redes sociales</li>
-              <li>Trabajo en equipo</li>
-            </ul>
-          </section>
-          <section class="panel">
-            <h2>Contacto <span>.</span></h2>
-            <form id="contacto">
-              <label>
-                Nombre
-                <input type="text" name="nombre" required autocomplete="name" />
-              </label>
-              <div class="fila">
-                <label>
-                  Teléfono
-                  <input type="tel" name="telefono" required autocomplete="tel" />
-                </label>
-                <label>
-                  Correo
-                  <input type="email" name="correo" required autocomplete="email" />
-                </label>
-              </div>
-              <label>
-                Mensaje
-                <textarea name="mensaje" required></textarea>
-              </label>
-              <button class="enviar" type="submit">Enviar por WhatsApp</button>
-            </form>
-          </section>
-        </div>
-      </div>
-    </div>
-
-    <div class="vista" id="certificaciones" hidden>
-      <div class="contenido">
-        <section class="panel">
-          <h2>Certificaciones</h2>
-          <div class="certs">
-            <article class="cert">
-              <strong>Excel intermedio</strong>
-              <p class="meta">Microsoft · 2024</p>
-              <p>Tablas dinámicas, filtros y reportes para el día a día de oficina.</p>
-            </article>
-            <article class="cert">
-              <strong>Marketing digital</strong>
-              <p class="meta">Google Digital Garage · 2023</p>
-              <p>Redes, contenido y métricas básicas para un negocio pequeño.</p>
-            </article>
-            <article class="cert">
-              <strong>Atención al cliente</strong>
-              <p class="meta">Capacítate para el Empleo · 2022</p>
-              <p>Escucha activa, quejas y un trato cercano en mostrador.</p>
-            </article>
-            <article class="cert">
-              <strong>Inglés B1</strong>
-              <p class="meta">Centro de Idiomas UCSP · en curso</p>
-              <p>Conversación y lectura para el trabajo y los estudios.</p>
-            </article>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <div class="vista" id="blog" hidden>
-      <div class="contenido">
-        <section class="panel">
-          <h2>Blog</h2>
-          <div class="posts">
-            <article class="post">
-              <strong>Cómo ordeno una oficina pequeña</strong>
-              <p class="meta">12 agosto 2025</p>
-              <p>
-                Tres hábitos que me funcionaron: una bandeja de entrada, un Excel
-                compartido y no dejar papeles para el viernes.
-              </p>
-            </article>
-            <article class="post">
-              <strong>Lo que aprendí vendiendo en Grupo Noral</strong>
-              <p class="meta">3 junio 2025</p>
-              <p>
-                Pedir el número, anotar el pedido y volver a llamar. Suena simple;
-                es lo que más cierra ventas.
-              </p>
-            </article>
-            <article class="post">
-              <strong>Estudiar marketing y trabajar al mismo tiempo</strong>
-              <p class="meta">18 marzo 2025</p>
-              <p>
-                Las clases de la UCSP me sirven más cuando las pruebo al día
-                siguiente, en el mostrador o en un reporte.
-              </p>
-            </article>
-            <article class="post">
-              <strong>Por qué sigo con el inglés</strong>
-              <p class="meta">20 enero 2025</p>
-              <p>
-                Estoy en B1. Quiero leer un brief o un correo sin traducir cada
-                renglón. Voy lento, pero voy.
-              </p>
-            </article>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <script>
-      const WHATSAPP = "51916901772";
-      const vistas = ["inicio", "certificaciones", "blog"];
-
-      const mostrar = (nombre) => {
-        const actual = vistas.includes(nombre) ? nombre : "inicio";
-        vistas.forEach((vista) => {
-          document.getElementById(vista).hidden = vista !== actual;
-        });
-        document.querySelectorAll("nav button").forEach((boton) => {
-          boton.setAttribute("aria-selected", String(boton.dataset.vista === actual));
-        });
-        if (location.hash.replace("#", "") !== actual) {
-          history.replaceState(null, "", `#${actual}`);
-        }
-      };
-
-      document.querySelectorAll("nav button").forEach((boton) => {
-        boton.addEventListener("click", () => mostrar(boton.dataset.vista));
-      });
-
-      window.addEventListener("hashchange", () => mostrar(location.hash.replace("#", "")));
-      mostrar(location.hash.replace("#", "") || "inicio");
-
-      document.getElementById("contacto").addEventListener("submit", (evento) => {
-        evento.preventDefault();
-        const datos = new FormData(evento.currentTarget);
-        const texto = [
-          `Hola, soy ${datos.get("nombre")}.`,
-          `Teléfono: ${datos.get("telefono")}`,
-          `Correo: ${datos.get("correo")}`,
-          "",
-          datos.get("mensaje"),
-        ].join("\n");
-        window.location.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
-      });
-    </script>
-  </body>
+	<head>
+		<title>Noelia Milagros Ramos Ramirez</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<header id="header" class="alt">
+				<a href="index.html" class="logo"><strong>Noelia</strong> <span>Ramos</span></a>
+				<nav>
+					<a href="#menu">Menú</a>
+				</nav>
+			</header>
+
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="certificaciones.html">Certificaciones</a></li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="index.html#contact">Contacto</a></li>
+				</ul>
+				<ul class="actions stacked">
+					<li><a href="https://wa.me/51916901772" class="button primary fit">WhatsApp</a></li>
+				</ul>
+			</nav>
+
+			<section id="banner" class="major">
+				<div class="inner">
+					<header class="major">
+						<h1>Noelia Milagros Ramos Ramirez</h1>
+					</header>
+					<div class="content">
+						<p>Administración y Marketing · Universidad Católica San Pablo<br />
+						Estudiante. Atención al cliente, ventas y oficina.</p>
+						<ul class="actions">
+							<li><a href="#one" class="button next scrolly">Ver más</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<div id="main">
+				<section id="one" class="tiles">
+					<article>
+						<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+						<header class="major">
+							<h3><a href="#experiencia" class="link">Experiencia</a></h3>
+							<p>Oficina, ventas y atención</p>
+						</header>
+					</article>
+					<article>
+						<span class="image"><img src="images/pic02.jpg" alt="" /></span>
+						<header class="major">
+							<h3><a href="certificaciones.html" class="link">Certificaciones</a></h3>
+							<p>Excel, marketing, inglés</p>
+						</header>
+					</article>
+					<article>
+						<span class="image"><img src="images/pic03.jpg" alt="" /></span>
+						<header class="major">
+							<h3><a href="blog.html" class="link">Blog</a></h3>
+							<p>Notas de trabajo y estudio</p>
+						</header>
+					</article>
+					<article>
+						<span class="image"><img src="images/noelia.jpg" alt="Noelia Ramos" /></span>
+						<header class="major">
+							<h3><a href="#two" class="link">Estudios</a></h3>
+							<p>UCSP · Arequipa</p>
+						</header>
+					</article>
+					<article>
+						<span class="image"><img src="images/pic05.jpg" alt="" /></span>
+						<header class="major">
+							<h3><a href="#two" class="link">Idiomas</a></h3>
+							<p>Español · Inglés B1</p>
+						</header>
+					</article>
+					<article>
+						<span class="image"><img src="images/pic06.jpg" alt="" /></span>
+						<header class="major">
+							<h3><a href="#contact" class="link">Contacto</a></h3>
+							<p>Escribime por WhatsApp</p>
+						</header>
+					</article>
+				</section>
+
+				<section id="two">
+					<div class="inner">
+						<header class="major">
+							<h2>Sobre mí</h2>
+						</header>
+						<p>Estudiante de Administración y Marketing en la Universidad Católica San Pablo. Me gusta el trato con las personas, el orden de una oficina y aprender marketing en la práctica.</p>
+						<p><strong>Estudios:</strong> Administración y Marketing · Universidad Católica San Pablo · Arequipa · 2021 — en curso.</p>
+						<p><strong>Idiomas:</strong> Español nativo. Inglés B1, en estudio.</p>
+						<p><strong>Habilidades:</strong> Excel, Word, PowerPoint, atención al público, redes sociales, trabajo en equipo.</p>
+					</div>
+				</section>
+
+				<section id="experiencia">
+					<div class="inner">
+						<header class="major">
+							<h2>Experiencia</h2>
+						</header>
+						<p><strong>2022–2025 · Asistente administrativa.</strong> Agenda, archivo, atención a proveedores y apoyo en reportes diarios de oficina.</p>
+						<p><strong>2021 · Ventas, Grupo Noral.</strong> Seguimiento de clientes, cotizaciones y metas del mes.</p>
+						<p><strong>2020 · Apoyo administrativo, Congreso.</strong> Atención al público, registro de documentos y apoyo en mesa de partes.</p>
+						<p><strong>2018–2019 · Atención al cliente.</strong> Mostrador, consultas y reclamos, con foco en un trato claro y rápido.</p>
+					</div>
+				</section>
+			</div>
+
+			<section id="contact">
+				<div class="inner">
+					<section>
+						<form id="contacto">
+							<div class="fields">
+								<div class="field half">
+									<label for="nombre">Nombre</label>
+									<input type="text" name="nombre" id="nombre" required />
+								</div>
+								<div class="field half">
+									<label for="telefono">Teléfono</label>
+									<input type="tel" name="telefono" id="telefono" required />
+								</div>
+								<div class="field">
+									<label for="correo">Correo</label>
+									<input type="email" name="correo" id="correo" required />
+								</div>
+								<div class="field">
+									<label for="mensaje">Mensaje</label>
+									<textarea name="mensaje" id="mensaje" rows="6" required></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Enviar por WhatsApp" class="primary" /></li>
+							</ul>
+						</form>
+					</section>
+					<section class="split">
+						<section>
+							<div class="contact-method">
+								<span class="icon solid alt fa-phone"></span>
+								<h3>WhatsApp</h3>
+								<a href="https://wa.me/51916901772">+51 916 901 772</a>
+							</div>
+						</section>
+						<section>
+							<div class="contact-method">
+								<span class="icon solid alt fa-home"></span>
+								<h3>Ciudad</h3>
+								<span>Arequipa, Perú</span>
+							</div>
+						</section>
+						<section>
+							<div class="contact-method">
+								<span class="icon solid alt fa-graduation-cap"></span>
+								<h3>Estudios</h3>
+								<span>Universidad Católica San Pablo</span>
+							</div>
+						</section>
+					</section>
+				</div>
+			</section>
+
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; Noelia Ramos</li>
+						<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/whatsapp.js"></script>
+	</body>
 </html>
