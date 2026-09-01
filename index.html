@@ -11,6 +11,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			#contact iframe {
+				width: 100%;
+				min-height: 56rem;
+				border: 0;
+				background: #fff;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 		<div id="wrapper">
@@ -123,29 +131,12 @@
 			<section id="contact">
 				<div class="inner">
 					<section>
-						<form id="contacto">
-							<div class="fields">
-								<div class="field half">
-									<label for="nombre">Nombre</label>
-									<input type="text" name="nombre" id="nombre" required />
-								</div>
-								<div class="field half">
-									<label for="telefono">Teléfono</label>
-									<input type="tel" name="telefono" id="telefono" required />
-								</div>
-								<div class="field">
-									<label for="correo">Correo</label>
-									<input type="email" name="correo" id="correo" required />
-								</div>
-								<div class="field">
-									<label for="mensaje">Mensaje</label>
-									<textarea name="mensaje" id="mensaje" rows="6" required></textarea>
-								</div>
-							</div>
-							<ul class="actions">
-								<li><input type="submit" value="Enviar por WhatsApp" class="primary" /></li>
-							</ul>
-						</form>
+						<iframe
+							title="Formulario de contacto"
+							src="https://docs.google.com/forms/d/e/1FAIpQLSdQmiom8iAhHjzRCxnCPvpptakIbg1IwrVIeWWPxHfEDS9XKQ/viewform?embedded=true"
+						>
+							Cargando…
+						</iframe>
 					</section>
 					<section class="split">
 						<section>
@@ -190,6 +181,5 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
-		<script src="assets/js/whatsapp.js"></script>
 	</body>
 </html>
