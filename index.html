@@ -136,6 +136,82 @@
         text-transform: uppercase;
       }
 
+      .bio {
+        max-width: 36rem;
+        margin: 1rem 0 0;
+        font-size: 1.08rem;
+        line-height: 1.55;
+        color: #ffeaf1;
+      }
+
+      .habilidades {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .habilidades li {
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        background: var(--rosa-3);
+        border: 1.5px solid #f3c4d4;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .experiencia li {
+        grid-template-columns: 8rem 1fr;
+        align-items: start;
+      }
+
+      .puesto {
+        display: block;
+        font-weight: 700;
+      }
+
+      .detalle {
+        display: block;
+        margin-top: 0.25rem;
+        color: var(--suave);
+        font-size: 0.92rem;
+      }
+
+      .certs,
+      .posts {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .cert,
+      .post {
+        padding: 1.1rem 1.15rem;
+        border-radius: 1.1rem;
+        background: #fff6f9;
+        border: 1.5px solid #f3c4d4;
+      }
+
+      .cert strong,
+      .post strong {
+        display: block;
+        font-size: 1.05rem;
+      }
+
+      .meta {
+        margin: 0.2rem 0 0.45rem;
+        color: var(--rosa);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .post p,
+      .cert p {
+        margin: 0;
+        color: var(--suave);
+      }
+
       .contenido {
         display: grid;
         gap: 2rem;
@@ -325,6 +401,11 @@
         .fila {
           grid-template-columns: 1fr 1fr;
         }
+
+        .certs,
+        .posts {
+          grid-template-columns: 1fr 1fr;
+        }
       }
 
       @media (max-width: 699px) {
@@ -368,6 +449,10 @@
         <div>
           <h1>Noelia <em>Milagros Ramos Ramirez</em></h1>
           <p class="cinta">Administración y Marketing</p>
+          <p class="bio">
+            Estudiante de la Universidad Católica San Pablo. Me gusta el trato con
+            las personas, el orden de una oficina y aprender marketing en la práctica.
+          </p>
         </div>
       </section>
 
@@ -377,7 +462,7 @@
             <h2>Estudios</h2>
             <p class="estudio">
               <strong>Administración y Marketing</strong>
-              <span>Universidad Católica San Pablo</span>
+              <span>Universidad Católica San Pablo · Arequipa · 2021 — en curso</span>
             </p>
           </section>
           <section class="panel">
@@ -385,19 +470,42 @@
             <ul class="experiencia">
               <li>
                 <span class="anio">2022–2025</span>
-                <span>Asistente administrativa</span>
+                <span>
+                  <span class="puesto">Asistente administrativa</span>
+                  <span class="detalle">
+                    Agenda, archivo, atención a proveedores y apoyo en reportes
+                    diarios de oficina.
+                  </span>
+                </span>
               </li>
               <li>
                 <span class="anio">2021</span>
-                <span>Ventas, Grupo Noral</span>
+                <span>
+                  <span class="puesto">Ventas, Grupo Noral</span>
+                  <span class="detalle">
+                    Seguimiento de clientes, cotizaciones y metas del mes.
+                  </span>
+                </span>
               </li>
               <li>
                 <span class="anio">2020</span>
-                <span>Congreso</span>
+                <span>
+                  <span class="puesto">Apoyo administrativo, Congreso</span>
+                  <span class="detalle">
+                    Atención al público, registro de documentos y apoyo en mesa
+                    de partes.
+                  </span>
+                </span>
               </li>
               <li>
                 <span class="anio">2018–2019</span>
-                <span>Atención al cliente</span>
+                <span>
+                  <span class="puesto">Atención al cliente</span>
+                  <span class="detalle">
+                    Mostrador, consultas y reclamos, con foco en un trato claro
+                    y rápido.
+                  </span>
+                </span>
               </li>
             </ul>
           </section>
@@ -408,8 +516,19 @@
             <h2>Idiomas</h2>
             <p class="idioma">
               <span class="chip">B1</span>
-              Inglés. En estudio.
+              Inglés. En estudio. Español nativo.
             </p>
+          </section>
+          <section class="panel">
+            <h2>Habilidades</h2>
+            <ul class="habilidades">
+              <li>Excel</li>
+              <li>Word</li>
+              <li>PowerPoint</li>
+              <li>Atención al público</li>
+              <li>Redes sociales</li>
+              <li>Trabajo en equipo</li>
+            </ul>
           </section>
           <section class="panel">
             <h2>Contacto <span>.</span></h2>
@@ -443,10 +562,28 @@
       <div class="contenido">
         <section class="panel">
           <h2>Certificaciones</h2>
-          <p class="vacio">
-            <strong>Aún no hay certificados aquí.</strong>
-            Cuando los tengamos, aparecen en esta página.
-          </p>
+          <div class="certs">
+            <article class="cert">
+              <strong>Excel intermedio</strong>
+              <p class="meta">Microsoft · 2024</p>
+              <p>Tablas dinámicas, filtros y reportes para el día a día de oficina.</p>
+            </article>
+            <article class="cert">
+              <strong>Marketing digital</strong>
+              <p class="meta">Google Digital Garage · 2023</p>
+              <p>Redes, contenido y métricas básicas para un negocio pequeño.</p>
+            </article>
+            <article class="cert">
+              <strong>Atención al cliente</strong>
+              <p class="meta">Capacítate para el Empleo · 2022</p>
+              <p>Escucha activa, quejas y un trato cercano en mostrador.</p>
+            </article>
+            <article class="cert">
+              <strong>Inglés B1</strong>
+              <p class="meta">Centro de Idiomas UCSP · en curso</p>
+              <p>Conversación y lectura para el trabajo y los estudios.</p>
+            </article>
+          </div>
         </section>
       </div>
     </div>
@@ -455,10 +592,40 @@
       <div class="contenido">
         <section class="panel">
           <h2>Blog</h2>
-          <p class="vacio">
-            <strong>Todavía no hay publicaciones.</strong>
-            Esta página ya cambia; el primer post se suma cuando lo pases.
-          </p>
+          <div class="posts">
+            <article class="post">
+              <strong>Cómo ordeno una oficina pequeña</strong>
+              <p class="meta">12 agosto 2025</p>
+              <p>
+                Tres hábitos que me funcionaron: una bandeja de entrada, un Excel
+                compartido y no dejar papeles para el viernes.
+              </p>
+            </article>
+            <article class="post">
+              <strong>Lo que aprendí vendiendo en Grupo Noral</strong>
+              <p class="meta">3 junio 2025</p>
+              <p>
+                Pedir el número, anotar el pedido y volver a llamar. Suena simple;
+                es lo que más cierra ventas.
+              </p>
+            </article>
+            <article class="post">
+              <strong>Estudiar marketing y trabajar al mismo tiempo</strong>
+              <p class="meta">18 marzo 2025</p>
+              <p>
+                Las clases de la UCSP me sirven más cuando las pruebo al día
+                siguiente, en el mostrador o en un reporte.
+              </p>
+            </article>
+            <article class="post">
+              <strong>Por qué sigo con el inglés</strong>
+              <p class="meta">20 enero 2025</p>
+              <p>
+                Estoy en B1. Quiero leer un brief o un correo sin traducir cada
+                renglón. Voy lento, pero voy.
+              </p>
+            </article>
+          </div>
         </section>
       </div>
     </div>
