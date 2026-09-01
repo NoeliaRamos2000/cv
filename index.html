@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Karla:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Karla:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -17,7 +17,6 @@
         --naranja: #f17a3a;
         --tinta: #3a1730;
         --suave: #7a4a62;
-        --papel: #fff7fa;
       }
 
       * {
@@ -27,11 +26,9 @@
       body {
         margin: 0;
         min-height: 100dvh;
-        background:
-          radial-gradient(circle at 8% 12%, #ffc1d4 0 22px, transparent 23px),
-          radial-gradient(circle at 92% 18%, #ffb07a 0 16px, transparent 17px),
-          radial-gradient(circle at 86% 88%, #f7b3c8 0 26px, transparent 27px),
-          linear-gradient(165deg, #ffd6e4 0%, var(--papel) 40%, #ffe8d4 100%);
+        background-color: #ffd0df;
+        background-image: url("./img/patron-rosas.png");
+        background-size: 420px;
         color: var(--tinta);
         font-family: Karla, system-ui, sans-serif;
         line-height: 1.5;
@@ -40,41 +37,42 @@
       .barra {
         position: sticky;
         top: 0;
-        z-index: 2;
+        z-index: 5;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1.5rem;
-        padding: 0.9rem 6vw;
+        padding: 0.75rem 5vw;
         background: #fff;
-        border-bottom: 3px solid var(--tinta);
+        border-bottom: 4px solid var(--tinta);
+        box-shadow: 0 8px 0 var(--naranja);
       }
 
       .marca {
+        margin: 0;
         font-family: Fraunces, Georgia, serif;
-        font-size: 1.2rem;
-        font-weight: 700;
+        font-size: 1.35rem;
+        font-weight: 800;
       }
 
       nav {
         display: flex;
-        gap: 0.4rem;
+        gap: 0.35rem;
       }
 
       nav button {
-        padding: 0.55rem 1.05rem;
-        border: 0;
+        padding: 0.55rem 1.1rem;
+        border: 3px solid var(--tinta);
         border-radius: 999px;
-        background: transparent;
-        color: var(--suave);
+        background: #fff;
+        color: var(--tinta);
         font: inherit;
         font-weight: 700;
         cursor: pointer;
       }
 
       nav button:hover {
-        background: var(--rosa-3);
-        color: var(--tinta);
+        background: #ffe0a8;
       }
 
       nav button[aria-selected="true"] {
@@ -87,45 +85,86 @@
       }
 
       .hero {
+        position: relative;
+        overflow: hidden;
         display: grid;
-        gap: 2rem;
-        align-items: center;
-        padding: 3rem 6vw 2.5rem;
+        gap: 1.5rem;
+        padding: 2.4rem 5vw 2.6rem;
         background:
-          radial-gradient(circle at 88% 20%, rgba(241, 122, 58, 0.3), transparent 28%),
-          linear-gradient(120deg, #ff4f8b 0%, #e43d7a 52%, #f17a3a 130%);
+          linear-gradient(120deg, rgba(228, 61, 122, 0.92), rgba(241, 122, 58, 0.88)),
+          url("./img/ramo.jpg") center / cover;
         color: #fff;
+        border-bottom: 4px solid var(--tinta);
       }
 
-      .hero img {
-        width: min(22rem, 100%);
+      .collage {
+        position: relative;
         height: 22rem;
+      }
+
+      .collage img {
+        position: absolute;
         object-fit: cover;
-        object-position: 50% 18%;
-        border-radius: 1.6rem;
         border: 5px solid #fff;
-        box-shadow: 10px 10px 0 rgba(58, 23, 48, 0.25);
+        box-shadow: 8px 8px 0 rgba(58, 23, 48, 0.35);
+      }
+
+      .collage .yo {
+        width: 15.5rem;
+        height: 19rem;
+        left: 1.2rem;
+        top: 0.6rem;
+        object-position: 50% 18%;
+        z-index: 2;
+        transform: rotate(-4deg);
+      }
+
+      .collage .lado {
+        width: 10rem;
+        height: 12rem;
+        right: 0.4rem;
+        top: 1.8rem;
+        transform: rotate(8deg);
+      }
+
+      .collage .mini {
+        width: 7.5rem;
+        height: 7.5rem;
+        left: 11.5rem;
+        bottom: 0.2rem;
+        z-index: 3;
+        transform: rotate(-11deg);
+      }
+
+      .sello-hero {
+        position: absolute;
+        width: 6.2rem;
+        right: 8%;
+        bottom: -1.4rem;
+        z-index: 4;
+        filter: drop-shadow(4px 6px 0 rgba(58, 23, 48, 0.3));
       }
 
       h1 {
         margin: 0;
         font-family: Fraunces, Georgia, serif;
-        font-size: clamp(2.6rem, 5vw, 4.4rem);
-        font-weight: 700;
-        line-height: 0.95;
-        letter-spacing: -0.03em;
+        font-size: clamp(2.8rem, 6vw, 5.2rem);
+        font-weight: 800;
+        line-height: 0.88;
+        letter-spacing: -0.04em;
+        text-shadow: 4px 4px 0 rgba(58, 23, 48, 0.25);
       }
 
       h1 em {
         display: block;
         font-style: italic;
-        font-weight: 500;
-        font-size: 0.62em;
+        font-weight: 600;
+        font-size: 0.55em;
       }
 
       .cinta {
         display: inline-block;
-        margin-top: 1.1rem;
+        margin-top: 1rem;
         padding: 0.35rem 0.85rem;
         border-radius: 999px;
         background: #fff;
@@ -140,103 +179,46 @@
         max-width: 36rem;
         margin: 1rem 0 0;
         font-size: 1.08rem;
-        line-height: 1.55;
         color: #ffeaf1;
       }
 
-      .habilidades {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .habilidades li {
-        padding: 0.35rem 0.75rem;
-        border-radius: 999px;
-        background: var(--rosa-3);
-        border: 1.5px solid #f3c4d4;
-        font-size: 0.88rem;
-        font-weight: 700;
-      }
-
-      .experiencia li {
-        grid-template-columns: 8rem 1fr;
-        align-items: start;
-      }
-
-      .puesto {
-        display: block;
-        font-weight: 700;
-      }
-
-      .detalle {
-        display: block;
-        margin-top: 0.25rem;
-        color: var(--suave);
-        font-size: 0.92rem;
-      }
-
-      .certs,
-      .posts {
+      .tira {
         display: grid;
-        gap: 1rem;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0;
+        border-bottom: 4px solid var(--tinta);
+        background: var(--tinta);
       }
 
-      .cert,
-      .post {
-        padding: 1.1rem 1.15rem;
-        border-radius: 1.1rem;
-        background: #fff6f9;
-        border: 1.5px solid #f3c4d4;
-      }
-
-      .cert strong,
-      .post strong {
+      .tira img {
+        width: 100%;
+        height: 7.2rem;
+        object-fit: cover;
         display: block;
-        font-size: 1.05rem;
-      }
-
-      .meta {
-        margin: 0.2rem 0 0.45rem;
-        color: var(--rosa);
-        font-size: 0.8rem;
-        font-weight: 700;
-      }
-
-      .post p,
-      .cert p {
-        margin: 0;
-        color: var(--suave);
+        filter: saturate(1.15);
       }
 
       .contenido {
         display: grid;
-        gap: 2rem;
-        width: min(70rem, calc(100% - 12vw));
+        gap: 1.4rem;
+        width: min(74rem, calc(100% - 10vw));
         margin: 0 auto;
-        padding: 2.5rem 0 4rem;
+        padding: 2rem 0 4rem;
       }
 
       .panel {
         background: #fff;
-        border: 3px solid var(--tinta);
-        border-radius: 1.6rem;
-        box-shadow: 8px 8px 0 var(--rosa);
-        padding: 1.6rem 1.7rem 1.8rem;
-      }
-
-      .columna .panel + .panel {
-        margin-top: 1.4rem;
+        border: 4px solid var(--tinta);
+        border-radius: 1.4rem;
+        box-shadow: 10px 10px 0 var(--rosa);
+        padding: 1.4rem 1.5rem 1.55rem;
       }
 
       h2 {
         margin: 0 0 0.85rem;
         font-family: Fraunces, Georgia, serif;
-        font-size: 1.55rem;
-        font-weight: 700;
+        font-size: 1.7rem;
+        font-weight: 800;
       }
 
       h2 span {
@@ -244,10 +226,22 @@
       }
 
       .estudio {
-        padding: 1.05rem 1.15rem;
+        display: grid;
+        grid-template-columns: 7.5rem 1fr;
+        gap: 1rem;
+        align-items: center;
+        padding: 0.7rem;
         border-radius: 1.1rem;
         background: var(--rosa-3);
-        border-left: 6px solid var(--rosa);
+        border: 3px solid var(--rosa);
+      }
+
+      .estudio img {
+        width: 7.5rem;
+        height: 5.6rem;
+        object-fit: cover;
+        border-radius: 0.8rem;
+        border: 3px solid #fff;
       }
 
       .estudio strong {
@@ -264,33 +258,63 @@
         padding: 0;
         list-style: none;
         display: grid;
-        gap: 0.7rem;
+        gap: 0.75rem;
       }
 
       .experiencia li {
         display: grid;
-        grid-template-columns: 8rem 1fr;
-        gap: 0.9rem;
+        grid-template-columns: 5.6rem 7.2rem 1fr;
+        gap: 0.85rem;
         align-items: center;
-        padding: 0.95rem 1.05rem;
+        padding: 0.55rem 0.7rem 0.55rem 0.55rem;
         border-radius: 1rem;
         background: #fff6f9;
-        border: 1.5px solid #f3c4d4;
+        border: 2.5px solid #f3c4d4;
       }
 
-      .experiencia li:first-child {
-        background: #fff1e6;
-        border-color: #f5c19a;
+      .experiencia li img {
+        width: 5.6rem;
+        height: 4.4rem;
+        object-fit: cover;
+        border-radius: 0.7rem;
+        border: 3px solid #fff;
+        box-shadow: 3px 3px 0 var(--naranja);
       }
 
       .anio {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         font-weight: 700;
         color: var(--rosa);
       }
 
-      .experiencia li:first-child .anio {
-        color: var(--naranja);
+      .puesto {
+        display: block;
+        font-weight: 700;
+      }
+
+      .detalle {
+        display: block;
+        margin-top: 0.2rem;
+        color: var(--suave);
+        font-size: 0.9rem;
+      }
+
+      .habilidades {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .habilidades li {
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        background: var(--rosa-3);
+        border: 2px solid var(--tinta);
+        font-size: 0.88rem;
+        font-weight: 700;
       }
 
       .idioma {
@@ -301,7 +325,7 @@
         padding: 1rem 1.1rem;
         border-radius: 1.1rem;
         background: #fff1e6;
-        border: 1.5px dashed var(--naranja);
+        border: 2.5px dashed var(--naranja);
       }
 
       .chip {
@@ -334,7 +358,7 @@
       textarea {
         width: 100%;
         padding: 0.8rem 0.9rem;
-        border: 1.5px solid #f3c4d4;
+        border: 2.5px solid #f3c4d4;
         border-radius: 0.9rem;
         background: #fff6f9;
         color: var(--tinta);
@@ -342,55 +366,93 @@
       }
 
       textarea {
-        min-height: 7.5rem;
+        min-height: 6.5rem;
         resize: vertical;
       }
 
       input:focus,
       textarea:focus {
-        outline: 2px solid var(--rosa);
+        outline: 3px solid var(--rosa);
         outline-offset: 2px;
-        border-color: var(--rosa);
       }
 
       .enviar {
         justify-self: start;
         padding: 0.85rem 1.4rem;
-        border: 0;
+        border: 3px solid var(--tinta);
         border-radius: 999px;
         background: var(--rosa);
         color: #fff;
         font: inherit;
         font-weight: 700;
         cursor: pointer;
-        box-shadow: 4px 4px 0 var(--tinta);
+        box-shadow: 5px 5px 0 var(--tinta);
       }
 
-      .enviar:hover {
-        background: #cc2f68;
+      .certs,
+      .posts {
+        display: grid;
+        gap: 1.1rem;
       }
 
-      .vacio {
-        padding: 3.5rem 2rem;
-        border-radius: 1.2rem;
-        background: var(--rosa-3);
-        border: 2px dashed #f3c4d4;
-        text-align: center;
+      .cert,
+      .post {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1.1rem;
+        background: #fff6f9;
+        border: 3px solid var(--tinta);
+      }
+
+      .cert img.portada,
+      .post img {
+        width: 100%;
+        height: 10rem;
+        object-fit: cover;
+        display: block;
+      }
+
+      .cert .texto,
+      .post .texto {
+        padding: 0.9rem 1rem 1.05rem;
+      }
+
+      .cert strong,
+      .post strong {
+        display: block;
+        font-family: Fraunces, Georgia, serif;
+        font-size: 1.15rem;
+      }
+
+      .meta {
+        margin: 0.15rem 0 0.4rem;
+        color: var(--rosa);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .post p,
+      .cert p {
+        margin: 0;
         color: var(--suave);
       }
 
-      .vacio strong {
-        display: block;
-        margin-bottom: 0.4rem;
-        color: var(--tinta);
-        font-family: Fraunces, Georgia, serif;
-        font-size: 1.4rem;
+      .cert .sello {
+        position: absolute;
+        width: 4.4rem;
+        top: 7.2rem;
+        right: 0.6rem;
+      }
+
+      .columna .panel + .panel {
+        margin-top: 1.2rem;
       }
 
       @media (min-width: 900px) {
         .hero {
-          grid-template-columns: 22rem 1fr;
-          padding: 3.5rem 6vw 3rem;
+          grid-template-columns: 28rem 1fr;
+          align-items: center;
+          padding: 2.8rem 5vw 3rem;
         }
 
         .inicio-grid {
@@ -398,10 +460,7 @@
           align-items: start;
         }
 
-        .fila {
-          grid-template-columns: 1fr 1fr;
-        }
-
+        .fila,
         .certs,
         .posts {
           grid-template-columns: 1fr 1fr;
@@ -412,21 +471,40 @@
         .barra {
           flex-direction: column;
           align-items: stretch;
-          padding: 0.8rem 1rem;
-        }
-
-        nav {
-          justify-content: space-between;
         }
 
         nav button {
           flex: 1;
-          padding: 0.55rem 0.3rem;
-          font-size: 0.78rem;
+          font-size: 0.75rem;
+          padding: 0.5rem 0.25rem;
         }
 
-        .hero img {
+        .collage {
           height: 16rem;
+        }
+
+        .collage .yo {
+          width: 11rem;
+          height: 14rem;
+        }
+
+        .collage .lado,
+        .collage .mini,
+        .sello-hero,
+        .tira {
+          display: none;
+        }
+
+        .experiencia li {
+          grid-template-columns: 4.4rem 1fr;
+        }
+
+        .experiencia .anio {
+          display: none;
+        }
+
+        .estudio {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -445,7 +523,11 @@
 
     <div class="vista" id="inicio">
       <section class="hero">
-        <img src="./foto.jpg" alt="Noelia Milagros Ramos Ramirez" width="352" height="352" />
+        <div class="collage">
+          <img class="yo" src="./foto.jpg" alt="Noelia Milagros Ramos Ramirez" />
+          <img class="lado" src="./img/ramo.jpg" alt="" />
+          <img class="mini" src="./img/escritorio.jpg" alt="" />
+        </div>
         <div>
           <h1>Noelia <em>Milagros Ramos Ramirez</em></h1>
           <p class="cinta">Administración y Marketing</p>
@@ -454,21 +536,35 @@
             las personas, el orden de una oficina y aprender marketing en la práctica.
           </p>
         </div>
+        <img class="sello-hero" src="./img/sello.png" alt="" />
       </section>
+
+      <div class="tira" aria-hidden="true">
+        <img src="./img/oficina.jpg" alt="" />
+        <img src="./img/excel.jpg" alt="" />
+        <img src="./img/ventas.jpg" alt="" />
+        <img src="./img/congreso.jpg" alt="" />
+        <img src="./img/atencion.jpg" alt="" />
+        <img src="./img/estudio.jpg" alt="" />
+      </div>
 
       <div class="contenido inicio-grid">
         <div class="columna">
           <section class="panel">
             <h2>Estudios</h2>
             <p class="estudio">
-              <strong>Administración y Marketing</strong>
-              <span>Universidad Católica San Pablo · Arequipa · 2021 — en curso</span>
+              <img src="./img/estudio.jpg" alt="" />
+              <span>
+                <strong>Administración y Marketing</strong>
+                <span>Universidad Católica San Pablo · Arequipa · 2021 — en curso</span>
+              </span>
             </p>
           </section>
           <section class="panel">
             <h2>Experiencia <span>.</span></h2>
             <ul class="experiencia">
               <li>
+                <img src="./img/oficina.jpg" alt="" />
                 <span class="anio">2022–2025</span>
                 <span>
                   <span class="puesto">Asistente administrativa</span>
@@ -479,6 +575,7 @@
                 </span>
               </li>
               <li>
+                <img src="./img/ventas.jpg" alt="" />
                 <span class="anio">2021</span>
                 <span>
                   <span class="puesto">Ventas, Grupo Noral</span>
@@ -488,6 +585,7 @@
                 </span>
               </li>
               <li>
+                <img src="./img/congreso.jpg" alt="" />
                 <span class="anio">2020</span>
                 <span>
                   <span class="puesto">Apoyo administrativo, Congreso</span>
@@ -498,6 +596,7 @@
                 </span>
               </li>
               <li>
+                <img src="./img/atencion.jpg" alt="" />
                 <span class="anio">2018–2019</span>
                 <span>
                   <span class="puesto">Atención al cliente</span>
@@ -564,24 +663,40 @@
           <h2>Certificaciones</h2>
           <div class="certs">
             <article class="cert">
-              <strong>Excel intermedio</strong>
-              <p class="meta">Microsoft · 2024</p>
-              <p>Tablas dinámicas, filtros y reportes para el día a día de oficina.</p>
+              <img class="portada" src="./img/excel.jpg" alt="" />
+              <img class="sello" src="./img/sello.png" alt="" />
+              <div class="texto">
+                <strong>Excel intermedio</strong>
+                <p class="meta">Microsoft · 2024</p>
+                <p>Tablas dinámicas, filtros y reportes para el día a día de oficina.</p>
+              </div>
             </article>
             <article class="cert">
-              <strong>Marketing digital</strong>
-              <p class="meta">Google Digital Garage · 2023</p>
-              <p>Redes, contenido y métricas básicas para un negocio pequeño.</p>
+              <img class="portada" src="./img/estudio.jpg" alt="" />
+              <img class="sello" src="./img/sello.png" alt="" />
+              <div class="texto">
+                <strong>Marketing digital</strong>
+                <p class="meta">Google Digital Garage · 2023</p>
+                <p>Redes, contenido y métricas básicas para un negocio pequeño.</p>
+              </div>
             </article>
             <article class="cert">
-              <strong>Atención al cliente</strong>
-              <p class="meta">Capacítate para el Empleo · 2022</p>
-              <p>Escucha activa, quejas y un trato cercano en mostrador.</p>
+              <img class="portada" src="./img/atencion.jpg" alt="" />
+              <img class="sello" src="./img/sello.png" alt="" />
+              <div class="texto">
+                <strong>Atención al cliente</strong>
+                <p class="meta">Capacítate para el Empleo · 2022</p>
+                <p>Escucha activa, quejas y un trato cercano en mostrador.</p>
+              </div>
             </article>
             <article class="cert">
-              <strong>Inglés B1</strong>
-              <p class="meta">Centro de Idiomas UCSP · en curso</p>
-              <p>Conversación y lectura para el trabajo y los estudios.</p>
+              <img class="portada" src="./img/ramo.jpg" alt="" />
+              <img class="sello" src="./img/sello.png" alt="" />
+              <div class="texto">
+                <strong>Inglés B1</strong>
+                <p class="meta">Centro de Idiomas UCSP · en curso</p>
+                <p>Conversación y lectura para el trabajo y los estudios.</p>
+              </div>
             </article>
           </div>
         </section>
@@ -594,36 +709,48 @@
           <h2>Blog</h2>
           <div class="posts">
             <article class="post">
-              <strong>Cómo ordeno una oficina pequeña</strong>
-              <p class="meta">12 agosto 2025</p>
-              <p>
-                Tres hábitos que me funcionaron: una bandeja de entrada, un Excel
-                compartido y no dejar papeles para el viernes.
-              </p>
+              <img src="./img/escritorio.jpg" alt="" />
+              <div class="texto">
+                <strong>Cómo ordeno una oficina pequeña</strong>
+                <p class="meta">12 agosto 2025</p>
+                <p>
+                  Tres hábitos que me funcionaron: una bandeja de entrada, un Excel
+                  compartido y no dejar papeles para el viernes.
+                </p>
+              </div>
             </article>
             <article class="post">
-              <strong>Lo que aprendí vendiendo en Grupo Noral</strong>
-              <p class="meta">3 junio 2025</p>
-              <p>
-                Pedir el número, anotar el pedido y volver a llamar. Suena simple;
-                es lo que más cierra ventas.
-              </p>
+              <img src="./img/ventas.jpg" alt="" />
+              <div class="texto">
+                <strong>Lo que aprendí vendiendo en Grupo Noral</strong>
+                <p class="meta">3 junio 2025</p>
+                <p>
+                  Pedir el número, anotar el pedido y volver a llamar. Suena simple;
+                  es lo que más cierra ventas.
+                </p>
+              </div>
             </article>
             <article class="post">
-              <strong>Estudiar marketing y trabajar al mismo tiempo</strong>
-              <p class="meta">18 marzo 2025</p>
-              <p>
-                Las clases de la UCSP me sirven más cuando las pruebo al día
-                siguiente, en el mostrador o en un reporte.
-              </p>
+              <img src="./img/estudio.jpg" alt="" />
+              <div class="texto">
+                <strong>Estudiar marketing y trabajar al mismo tiempo</strong>
+                <p class="meta">18 marzo 2025</p>
+                <p>
+                  Las clases de la UCSP me sirven más cuando las pruebo al día
+                  siguiente, en el mostrador o en un reporte.
+                </p>
+              </div>
             </article>
             <article class="post">
-              <strong>Por qué sigo con el inglés</strong>
-              <p class="meta">20 enero 2025</p>
-              <p>
-                Estoy en B1. Quiero leer un brief o un correo sin traducir cada
-                renglón. Voy lento, pero voy.
-              </p>
+              <img src="./img/oficina.jpg" alt="" />
+              <div class="texto">
+                <strong>Por qué sigo con el inglés</strong>
+                <p class="meta">20 enero 2025</p>
+                <p>
+                  Estoy en B1. Quiero leer un brief o un correo sin traducir cada
+                  renglón. Voy lento, pero voy.
+                </p>
+              </div>
             </article>
           </div>
         </section>
