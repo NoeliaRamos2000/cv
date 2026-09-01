@@ -193,6 +193,64 @@
         font-weight: 700;
       }
 
+      form {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .fila {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      label {
+        display: grid;
+        gap: 0.35rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 0.75rem 0.85rem;
+        border: 1.5px solid #f3c4d4;
+        border-radius: 0.9rem;
+        background: #fff6f9;
+        color: var(--tinta);
+        font: inherit;
+      }
+
+      textarea {
+        min-height: 7rem;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: 2px solid var(--rosa);
+        outline-offset: 2px;
+        border-color: var(--rosa);
+      }
+
+      button {
+        justify-self: start;
+        margin-top: 0.2rem;
+        padding: 0.8rem 1.3rem;
+        border: 0;
+        border-radius: 999px;
+        background: var(--rosa);
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 4px 4px 0 var(--tinta);
+      }
+
+      button:hover {
+        background: #cc2f68;
+      }
+
       @media (min-width: 640px) {
         main {
           padding: 3.25rem 1.5rem 4rem;
@@ -206,6 +264,10 @@
 
         .cuerpo {
           padding: 1.85rem 2rem 2.1rem;
+        }
+
+        .fila {
+          grid-template-columns: 1fr 1fr;
         }
       }
     </style>
@@ -259,8 +321,49 @@
               Inglés. En estudio.
             </p>
           </section>
+
+          <section>
+            <h2>Contacto <span>.</span></h2>
+            <form id="contacto">
+              <label>
+                Nombre
+                <input type="text" name="nombre" required autocomplete="name" />
+              </label>
+              <div class="fila">
+                <label>
+                  Teléfono
+                  <input type="tel" name="telefono" required autocomplete="tel" />
+                </label>
+                <label>
+                  Correo
+                  <input type="email" name="correo" required autocomplete="email" />
+                </label>
+              </div>
+              <label>
+                Mensaje
+                <textarea name="mensaje" required></textarea>
+              </label>
+              <button type="submit">Enviar por WhatsApp</button>
+            </form>
+          </section>
         </div>
       </article>
     </main>
+    <script>
+      const WHATSAPP = "51999999999";
+
+      document.getElementById("contacto").addEventListener("submit", (evento) => {
+        evento.preventDefault();
+        const datos = new FormData(evento.currentTarget);
+        const texto = [
+          `Hola, soy ${datos.get("nombre")}.`,
+          `Teléfono: ${datos.get("telefono")}`,
+          `Correo: ${datos.get("correo")}`,
+          "",
+          datos.get("mensaje"),
+        ].join("\n");
+        window.location.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+      });
+    </script>
   </body>
 </html>
